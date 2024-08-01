@@ -1,16 +1,25 @@
-{% extends "base.html" %}
-
-{% block title %}Pergunta Atendimento{% endblock %}
-
-{% block content %}
-<h1>O cliente vai ser atendido?</h1>
-<form action="/submit_atendimento_form" method="post">
-    <label>
-        <input type="radio" name="atendido" value="Sim"> Sim
-    </label>
-    <label>
-        <input type="radio" name="atendido" value="Não"> Não
-    </label>
-    <input type="submit" value="Enviar">
-</form>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atendimento</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>O cliente vai ser atendido?</h1>
+        <form action="/submit_atendimento_form" method="post">
+            <div class="radio-label">
+                <label for="sim">Sim</label>
+                <input type="radio" id="sim" name="atendido" value="Sim" required>
+            </div>
+            <div class="radio-label">
+                <label for="nao">Não</label>
+                <input type="radio" id="nao" name="atendido" value="Não" required>
+            </div>
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+</body>
+</html>
