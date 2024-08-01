@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Pergunta Atendimento{% endblock %}
+
+{% block content %}
+<h1>O cliente vai ser atendido?</h1>
+<form action="/submit_atendimento_form" method="post">
+    <label>
+        <input type="radio" name="atendido" value="Sim"> Sim
+    </label>
+    <label>
+        <input type="radio" name="atendido" value="Não"> Não
+    </label>
+    <input type="submit" value="Enviar">
+</form>
+{% endblock %}
