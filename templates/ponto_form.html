@@ -1,22 +1,19 @@
-{% extends "base.html" %}
-
-{% block title %}Cadastro de Ponto{% endblock %}
-
-{% block content %}
-<h1>Cadastro de Ponto</h1>
-<form action="/submit_ponto_form" method="post">
-    <label for="cpf">CPF:</label>
-    <input type="text" id="cpf" name="cpf" required>
-    
-    <label for="data">Data:</label>
-    <input type="date" id="data" name="data" required>
-    
-    <label for="horario_entrada">Horário de Entrada:</label>
-    <input type="time" id="horario_entrada" name="horario_entrada" required>
-    
-    <label for="horario_saida">Horário de Saída:</label>
-    <input type="time" id="horario_saida" name="horario_saida" required>
-    
-    <input type="submit" value="Cadastrar">
-</form>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Ponto</title>
+</head>
+<body>
+    <form action="/ponto" method="post">
+        <label for="data">Data:</label>
+        <input type="date" id="data" name="data" required><br>
+        <label for="horario">Horário:</label>
+        <input type="time" id="horario" name="horario" required><br>
+        <label for="cpf">CPF do Corretor:</label>
+        <input type="text" id="cpf" name="cpf" required><br>
+        <button type="submit">Cadastrar</button>
+    </form>
+</body>
+</html>
