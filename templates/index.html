@@ -1,8 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+
+{% block title %}Menu{% endblock %}
+
+{% block content %}
 <head>
     <meta charset="UTF-8">
-    <title>Usuários</title>
+    <title>Vendedor</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
@@ -10,14 +13,14 @@
     <h2>Vendedor 1</h2>
     <div class="vendedor">
         {% for ponto in vendedores['vendedor1'] %}
-            <p>{{ ponto.nome_corretor }} - {{ ponto.imobiliaria }} - {{ ponto.data }} - {{ ponto.turno }} - Mesa {{ ponto.mesa }}</p>
+            <p>{{ ponto.nome_corretor }} - {{ ponto.imobiliaria }} - {{ ponto.data }}</p>
         {% endfor %}
     </div>
     <h2>Vendedor 2</h2>
     <div class="vendedor">
         {% for ponto in vendedores['vendedor2'] %}
-            <p>{{ ponto.nome_corretor }} - {{ ponto.imobiliaria }} - {{ ponto.data }} - {{ ponto.turno }} - Mesa {{ ponto.mesa }}</p>
+            <p>{{ ponto.nome_corretor }} - {{ ponto.imobiliaria }} - {{ ponto.data }}</p>
         {% endfor %}
     </div>
 </body>
-</html>
+{% endblock %}
