@@ -5,7 +5,7 @@
 {% block content %}
 <div class="form-container">
     <h1>O cliente vai ser atendido?</h1>
-    <form action="/submit_atendimento_form" method="post">
+    <form id="atendimentoForm" action="/submit_atendimento_form" method="post">
         <label>
             <input type="radio" name="atendido" value="Sim"> Sim
         </label>
@@ -13,9 +13,20 @@
             <input type="radio" name="atendido" value="Não"> Não
         </label>
         <label>
-            <input type="radio" name="atendido" value="Não"> retorno
+            <input type="radio" name="atendido" value="Retorno"> Retorno
         </label>
         <input type="submit" value="Enviar">
     </form>
 </div>
+
+<script>
+    document.getElementById('atendimentoForm').addEventListener('submit', function(event) {
+        const atendido = document.querySelector('input[name="atendido"]:checked').value;
+        if (atendido === 'Retorno') {
+            event.preventDefault(); // Evita o envio do formulário
+            window.location.href = "/retorno_cliente"; // Redireciona para a página de retorno do cliente
+        }
+    });
+</script>
 {% endblock %}
+

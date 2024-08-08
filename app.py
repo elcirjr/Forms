@@ -50,19 +50,26 @@ def atendimento():
 @app.route('/submit_atendimento_form', methods=['POST'])
 def submit_atendimento_form():
     atendido = request.form['atendido']
-    
-    if not os.path.exists(FILE_NAME_ATENDIMENTO):
-        init_excel_file(FILE_NAME_ATENDIMENTO, ['Atendido'])
-    
-    wb = load_workbook(FILE_NAME_ATENDIMENTO)
-    ws = wb.active
-    ws.append([atendido])
-    wb.save(FILE_NAME_ATENDIMENTO)
-    
-    if atendido == 'Sim':
+    if atendido == "Sim":
+        # Lógica para quando o cliente será atendido
         return redirect(url_for('cliente_form'))
-    else:
+    elif atendido == "Não":
+        # Lógica para quando o cliente não será atendido
         return redirect(url_for('menu'))
+    else:
+        # Lógica para quando o cliente será um retorno
+        return redirect(url_for('retorno_cliente'))
+
+@app.route('/retorno_cliente')
+def retorno_cliente():
+    return render_template('retorno_cliente.html')
+
+@app.route('/submit_retorno_form', methods=['POST'])
+def submit_retorno_form():
+    nome = request.form['nome']
+    cpf = request.form['cpf']
+    # Lógica para salvar os dados do cliente retornado
+    return redirect(url_for('menu'))
 
 @app.route('/cliente_form')
 def cliente_form():
