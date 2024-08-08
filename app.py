@@ -53,7 +53,7 @@ def submit_atendimento_form():
     if atendido == 'Sim':
         return redirect(url_for('cliente_form'))
     else:
-        return redirect(url_for('index'))
+        return redirect(url_for('menu'))
 
 @app.route('/cliente_form')
 def cliente_form():
@@ -75,7 +75,7 @@ def submit_cliente_form():
     ws.append([nome, telefone, email, data_visita, como_soube])
     wb.save(FILE_NAME_CLIENTE)
     
-    return redirect(url_for('index'))
+    return redirect(url_for('menu'))
 
 @app.route('/corretor_form')
 def corretor_form():
@@ -98,7 +98,7 @@ def submit_corretor_form():
     ws.append([cpf, nome, imobiliaria])
     wb.save(FILE_NAME_CORRETOR)
     
-    return redirect(url_for('index'))
+    return redirect(url_for('menu'))
 
 @app.route('/ponto_form')
 def ponto_form():
@@ -123,7 +123,7 @@ def submit_ponto_form():
     ws.append([cpf, data, horario_entrada, horario_saida])
     wb.save(FILE_NAME_PONTO)
     
-    return redirect(url_for('index'))
+    return redirect(url_for('menu'))
 
 if __name__ == '__main__':
     init_excel_file(FILE_NAME_ATENDIMENTO, ['Atendido', 'Data'])
