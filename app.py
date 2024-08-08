@@ -74,16 +74,15 @@ def submit_cliente_form():
     telefone = request.form['telefone']
     email = request.form['email']
     data_visita = request.form['data_visita']
+    corretor = request.form['corretor']
+    imobiliaria = request.form['imobiliaria']
     como_soube = request.form['como_soube']
-    
-    if not os.path.exists(FILE_NAME_CLIENTE):
-        init_excel_file(FILE_NAME_CLIENTE, ['Nome', 'Telefone', 'E-mail', 'Data da Visita', 'Como Soube'])
-    
-    wb = load_workbook(FILE_NAME_CLIENTE)
-    ws = wb.active
-    ws.append([nome, telefone, email, data_visita, como_soube])
-    wb.save(FILE_NAME_CLIENTE)
-    
+
+    # Aqui você pode salvar os dados no banco de dados
+    cliente = Cliente(nome=nome, telefone=telefone, email=email, data_visita=data_visita, corretor=corretor, imobiliaria=imobiliaria, como_soube=como_soube)
+    db.session.add(cliente)
+    db.session.commit()
+
     return redirect(url_for('menu'))
 
 @app.route('/corretor_form')
