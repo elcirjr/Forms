@@ -1,15 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %}index{% endblock %}
+{% block title %}Index{% endblock %}
 
 {% block content %}
-<body>
-    <h1>Dados dos Vendedores</h1>
-    <h2>Vendedor 1</h2>
-    <div class="vendedor">
-       
-    </div>
-    <h2>Vendedor 2</h2>
-    
-</body>
+<h2>Selecione o Vendedor</h2>
+<div class="vendedores">
+    <a href="{{ url_for('vendedor', vendedor='vendedor1') }}" class="vendedor-button">Vendedor 1</a>
+    <a href="{{ url_for('vendedor', vendedor='vendedor2') }}" class="vendedor-button">Vendedor 2</a>
+</div>
 {% endblock %}
