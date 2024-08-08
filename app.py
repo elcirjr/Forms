@@ -34,11 +34,6 @@ def usuarios():
     }
     return render_template('index.html', vendedores=vendedores)
 
-def get_vendedor_data(vendedor):
-    # Função fictícia para obter dados do vendedor do banco de dados
-    # Substitua esta lógica conforme a estrutura do seu banco de dados
-    return db.session.query(Ponto).filter_by(vendedor=vendedor).all()
-
 @app.route('/menu')
 def index():
     return render_template('menu.html')
