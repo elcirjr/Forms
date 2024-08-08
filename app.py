@@ -30,7 +30,7 @@ def check_duplicate(file_name, cpf):
 def index(vendedor):
     if vendedor not in ['vendedor1', 'vendedor2']:
         abort(404)  # Retorna erro 404 se o vendedor não for válido
-    return render_template('menu.html', vendedor=vendedor)
+    return render_template('menu.html')
 
 @app.route('/menu')
 def menu():
