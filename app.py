@@ -27,11 +27,11 @@ def check_duplicate(file_name, cpf):
     return False
 
 @app.route('/')
- def index():
-    return render_template('menu.html')
+def index():
+    return render_template('index.html')
 
 @app.route('/menu')
-def index():
+def menu():
     return render_template('menu.html')
 
 @app.route('/atendimento')
