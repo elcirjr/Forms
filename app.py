@@ -27,12 +27,8 @@ def check_duplicate(file_name, cpf):
     return False
 
 @app.route('/')
-def usuarios():
-    vendedores = {
-        'vendedor1': get_vendedor_data('vendedor1'),
-        'vendedor2': get_vendedor_data('vendedor2')
-    }
-    return render_template('index.html', vendedores=vendedores)
+ def index()
+    return render_template('menu.html')
 
 @app.route('/menu')
 def index():
