@@ -27,7 +27,7 @@ def check_duplicate(file_name, cpf):
     return False
 
 @app.route('/')
- def index()
+ def index():
     return render_template('menu.html')
 
 @app.route('/menu')
