@@ -27,10 +27,17 @@ def check_duplicate(file_name, cpf):
     return False
 
 @app.route('/')
-def index(index):
-    if index not in ['vendedor1', 'vendedor2']:
+def index():
+    return render_template('index.html')
+
+@app.route('/selecionar_vendedor', methods=['POST'])
+def selecionar_vendedor():
+    vendedor = request.form.get('vendedor')
+    if vendedor not in ['vendedor1', 'vendedor2']:
         abort(404)  # Retorna erro 404 se o vendedor não for válido
-    return render_template('menu.html')
+    # Aqui você pode armazenar a seleção do vendedor na sessão ou no banco de dados se necessário
+    # Exemplo: session['vendedor'] = vendedor
+    return redirect(url_for('menu', vendedor=vendedor))
 
 @app.route('/menu')
 def menu():

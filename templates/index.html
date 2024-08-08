@@ -4,8 +4,8 @@
 
 {% block content %}
 <h2>Selecione o Vendedor</h2>
-<div class="vendedores">
-    <a href="{{ url_for('vendedor', vendedor='vendedor1') }}" class="vendedor-button">Vendedor 1</a>
-    <a href="{{ url_for('vendedor', vendedor='vendedor2') }}" class="vendedor-button">Vendedor 2</a>
-</div>
+<form action="{{ url_for('selecionar_vendedor') }}" method="POST">
+    <button type="submit" name="vendedor" value="vendedor1">Vendedor 1</button>
+    <button type="submit" name="vendedor" value="vendedor2">Vendedor 2</button>
+</form>
 {% endblock %}
