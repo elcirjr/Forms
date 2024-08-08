@@ -1,14 +1,23 @@
-{% extends "base.html" %}
-
-{% block title %}Menu{% endblock %}
-
-{% block content %}
-<div class="menu-container">
-    
-    <ul>
-        <li><a href="/atendimento">Formulário Cliente</a></li>
-        <li><a href="/corretor_form">Formulário Corretor</a></li>
-        <li><a href="/ponto_form">Cadastro de Ponto</a></li>
-    </ul>
-</div>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuários</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Dados dos Vendedores</h1>
+    <h2>Vendedor 1</h2>
+    <div class="vendedor">
+        {% for ponto in vendedores['vendedor1'] %}
+            <p>{{ ponto.nome_corretor }} - {{ ponto.imobiliaria }} - {{ ponto.data }} - {{ ponto.turno }} - Mesa {{ ponto.mesa }}</p>
+        {% endfor %}
+    </div>
+    <h2>Vendedor 2</h2>
+    <div class="vendedor">
+        {% for ponto in vendedores['vendedor2'] %}
+            <p>{{ ponto.nome_corretor }} - {{ ponto.imobiliaria }} - {{ ponto.data }} - {{ ponto.turno }} - Mesa {{ ponto.mesa }}</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
