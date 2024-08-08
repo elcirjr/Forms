@@ -115,29 +115,31 @@ def submit_corretor_form():
     
     return redirect(url_for('menu'))
 
+@app.route('/mesa')
+def mesa():
+    return render_template('mesa.html')
+
 @app.route('/ponto_form')
 def ponto_form():
-    return render_template('ponto_form.html')
+    periodo = request.args.get('periodo')
+    mesa = request.args.get('mesa')
+    return render_template('ponto_form.html', periodo=periodo, mesa=mesa)
 
 @app.route('/submit_ponto_form', methods=['POST'])
 def submit_ponto_form():
+    periodo = request.form['periodo']
+    mesa = request.form['mesa']
     cpf = request.form['cpf']
     data = request.form['data']
-    horario_entrada = request.form['horario_entrada']
-    horario_saida = request.form['horario_saida']
-    
-    # Verifica se o CPF existe na planilha de corretores
-    if not check_duplicate(FILE_NAME_CORRETOR, cpf):
-        return "Erro: CPF não cadastrado."
-    
-    if not os.path.exists(FILE_NAME_PONTO):
-        init_excel_file(FILE_NAME_PONTO, ['CPF', 'Data', 'Horário de Entrada', 'Horário de Saída'])
-    
-    wb = load_workbook(FILE_NAME_PONTO)
-    ws = wb.active
-    ws.append([cpf, data, horario_entrada, horario_saida])
-    wb.save(FILE_NAME_PONTO)
-    
+    horario = request.form['horario']
+    observacoes = request.form.get('observacoes', '')
+
+    # Aqui você pode salvar esses dados no banco de dados
+    # Exemplo:
+    # novo_ponto = Ponto(periodo=periodo, mesa=mesa, cpf=cpf, data=data, horario=horario, observacoes=observacoes)
+    # db.session.add(novo_ponto)
+    # db.session.commit()
+
     return redirect(url_for('menu'))
 
 if __name__ == '__main__':

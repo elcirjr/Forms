@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Escolha a Mesa{% endblock %}
+
+{% block content %}
+<div class="mesa-container">
+    <h1>Escolha a Mesa</h1>
+
+    <h2>Manhã</h2>
+    <div class="mesa-row">
+        <button onclick="selectMesa('Manhã', 1)">Mesa 1</button>
+        <button onclick="selectMesa('Manhã', 2)">Mesa 2</button>
+        <button onclick="selectMesa('Manhã', 3)">Mesa 3</button>
+        <button onclick="selectMesa('Manhã', 4)">Mesa 4</button>
+        <button onclick="selectMesa('Manhã', 5)">Mesa 5</button>
+        <button onclick="selectMesa('Manhã', 6)">Mesa 6</button>
+    </div>
+
+    <h2>Tarde</h2>
+    <div class="mesa-row">
+        <button onclick="selectMesa('Tarde', 1)">Mesa 1</button>
+        <button onclick="selectMesa('Tarde', 2)">Mesa 2</button>
+        <button onclick="selectMesa('Tarde', 3)">Mesa 3</button>
+        <button onclick="selectMesa('Tarde', 4)">Mesa 4</button>
+        <button onclick="selectMesa('Tarde', 5)">Mesa 5</button>
+        <button onclick="selectMesa('Tarde', 6)">Mesa 6</button>
+    </div>
+</div>
+
+<script>
+    function selectMesa(periodo, mesa) {
+        // Redireciona para a página de cadastro de ponto passando as informações da mesa e período
+        window.location.href = `/ponto_form?periodo=${periodo}&mesa=${mesa}`;
+    }
+</script>
+{% endblock %}
